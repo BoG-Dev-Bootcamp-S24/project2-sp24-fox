@@ -5,8 +5,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-<main>
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
+<main class="">
+<nav class="bg-white border-gray-300 shadow-md shadow-red-500/40">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="images/appLogo.png" class="h-8" alt="Flowbite Logo" />
@@ -14,27 +14,27 @@ export default function Home() {
     </a>
   </div>
 </nav>
-
-<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+<br></br><br></br><br></br>
+<div class="flex h-full flex-col justify-center px-6 py-12 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-    <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Login to your Account</h2>
+    <h2 class="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">Login to your Account</h2>
   </div>
 
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
     <form class="space-y-6" action="#" method="POST">
       <div>
-        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+        <label for="email" class="block text-md font-medium leading-6 text-gray-900">Email address</label>
         <div class="mt-2">
-          <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
+        <input class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-email" type="text" placeholder="Email"></input>
         </div>
       </div>
 
       <div>
         <div class="flex items-center justify-between">
-          <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+          <label for="password" class="block text-md font-medium leading-6 text-gray-900">Password</label>
         </div>
         <div class="mt-2">
-          <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
+          <input class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-password" type="text" placeholder="Password"></input>
         </div>
       </div>
 
@@ -45,7 +45,7 @@ export default function Home() {
 
     <p class="mt-10 text-center text-sm text-gray-500">
       Don't have an account?
-      <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Create an Account Now</a>
+      <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500" style={{marginLeft: 2.5 + 'px'}}>Create an Account Now</a>
     </p>
   </div>
 </div>
