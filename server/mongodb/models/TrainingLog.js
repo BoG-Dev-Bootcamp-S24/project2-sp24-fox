@@ -1,25 +1,33 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
-const userSchema = new Schema ({
+const trainingLogSchema = new Schema ({
     _id: {
         type: ObjectId,
         required: true
     },
-    fullName: {
+    user: {
+        type: ObjectId,
+        required: true
+    },
+    animal: {
+        type: ObjectId,
+        required: true
+    },
+    title: {
         type: String,
         required: true
     },
-    email: {
+    date: {
+        type: Date,
+        required: true
+    },
+    description: {
         type: String,
         required: true
     },
-    password: {
-        type: String,
-        required: true
-    },
-    admin: {
-        type: Boolean,
+    hours: {
+        type: Number,
         required: true
     }
 })

@@ -1,25 +1,29 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
-const userSchema = new Schema ({
+const animalSchema = new Schema ({
     _id: {
         type: ObjectId,
         required: true
     },
-    fullName: {
+    name: {
         type: String,
         required: true
     },
-    email: {
+    breed: {
         type: String,
         required: true
     },
-    password: {
-        type: String,
+    owner: {
+        type: ObjectId,
         required: true
     },
-    admin: {
-        type: Boolean,
+    hoursTrained: {
+        type: Number,
+        required: true
+    },
+    profilePicture: {
+        type: string,
         required: true
     }
 })
