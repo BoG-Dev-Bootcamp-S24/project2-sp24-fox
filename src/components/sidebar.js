@@ -1,40 +1,55 @@
-
-
 export default function Sidebar() {
     return (
-        <div class="flex-col bg-blue-500 w-[300px] h-lvh">
-            <div class="justify-center items-center bg-yellow-200 h-[330px] pt-[50px]">
-                <button class="bg-gray-50 hover:bg-red-400 w-[240px] h-[45px] ml-[15px] pl-[50px] rounded-[13px] text-left font-medium">
+        <div class="flex flex-col w-[300px] h-lvh">
+            <div class="h-[330px] pt-[50px]">
+                <button class="flex flex-row justify-start items-center bg-gray-50 hover:bg-red-400 w-[240px] h-[45px] ml-[15px] pl-[15px] rounded-[13px] text-left font-medium text-lg">
+                    <img src="images/inactiveTrainingLogs.png" class="h-6 pr-[20px]"></img>
                     Training logs
                 </button>
-                <button class="bg-gray-50 hover:bg-red-400 w-[240px] h-[45px] ml-[15px] pl-[50px] rounded-[13px] text-left font-medium">
+                <button class="flex flex-row justify-start items-center bg-gray-50 hover:bg-red-400 w-[240px] h-[45px] ml-[15px] pl-[15px] rounded-[13px] text-left font-medium text-lg">
+                    <img src="images/inactiveAnimalLogo.png" class="h-6 pr-[20px]"></img>
                     Animals
                 </button>
 
-                <hr class="bg-gray-300 w-[270px] h-[3px] mt-[20px] ml-[15px]"></hr>
+                <hr class="bg-gray-300 w-[270px] h-[3px] mt-[15px] ml-[15px]"></hr>
 
-                <p class="mt-[10px] ml-[25px] mb-[8px] font-medium">
+                <p class="mt-[10px] ml-[30px] mb-[8px] font-medium text-lg">
                     Admin access
                 </p>
-                <button class="bg-gray-50 hover:bg-red-400 w-[240px] h-[45px] ml-[15px] pl-[50px] rounded-[13px] text-left font-medium">
+                <button class="flex flex-row justify-start items-center bg-gray-50 hover:bg-red-400 w-[240px] h-[45px] ml-[15px] pl-[15px] rounded-[13px] text-left font-medium text-lg">
+                    <img src="images/inactiveAllTrainingLogo.png" class="h-6 pr-[20px]"></img>
                     All training
                 </button>
-                <button class="bg-gray-50 hover:bg-red-400 w-[240px] h-[45px] ml-[15px] pl-[50px] rounded-[13px] text-left font-medium">
+                <button class="flex flex-row justify-start items-center bg-gray-50 hover:bg-red-400 w-[240px] h-[45px] ml-[15px] pl-[15px] rounded-[13px] text-left font-medium text-lg">
+                    <img src="images/inactiveAllAnimalsLogo.png" class="h-6 pr-[20px]"></img>
                     All animals
                 </button>
-                <button class="bg-gray-50 hover:bg-red-400 w-[240px] h-[45px] ml-[15px] pl-[50px] rounded-[13px] text-left font-medium">
+                <button class="flex flex-row justify-start items-center bg-gray-50 hover:bg-red-400 w-[240px] h-[45px] ml-[15px] pl-[15px] rounded-[13px] text-left font-medium text-lg">
+                    <img src="images/inactiveAllUsersLogo.png" class="h-6 pr-[20px]"></img>
                     All users
                 </button>
             </div>
             <div class="flex-col absolute bottom-0 bg-red-200 w-[300px] h-[60px]">
                 <hr class="bg-gray-300 w-[270px] h-[3px] ml-[15px]"></hr>
-                <div class="mt-[2px]">
-                    <p class="font-bold ml-[15px] pl-[50px]">
-                        Long Lam
-                    </p>
-                    <p class="font-normal ml-[15px] pl-[50px]">
-                        Admin
-                    </p>
+                <div class="flex flex-row justify-between items-center bg-yellow-200 mt-[2px]">
+                    <div class="flex flex-row justify-center items-center">
+                        <div class="flex flex-row justify-center items-center bg-green-500 w-[40px] h-[40px] font-bold text-lg rounded-[50px] ml-[15px] mr-[15px]">
+                            L
+                        </div>
+                        <div class="flex flex-col bg-red-500">
+                            <p class="font-bold">
+                                Long Lam
+                            </p>
+                            <p class="font-normal">
+                                Admin
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-blue-500 w-[50px]">
+                        <button class="bg-green-200 w-[40px] h-[35px] pl-[10px]">
+                            <img src="images/logoutLogo.png" class="h-6"></img>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
