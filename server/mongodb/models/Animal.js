@@ -2,10 +2,6 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const animalSchema = new Schema ({
-    _id: {
-        type: ObjectId,
-        required: true
-    },
     name: {
         type: String,
         required: true
@@ -27,3 +23,5 @@ const animalSchema = new Schema ({
         required: true
     }
 })
+
+export default mongoose.models?.Animal || mongoose.model("animal", animalSchema);
