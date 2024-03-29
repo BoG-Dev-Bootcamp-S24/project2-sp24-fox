@@ -2,10 +2,6 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const trainingLogSchema = new Schema ({
-    _id: {
-        type: ObjectId,
-        required: true
-    },
     user: {
         type: ObjectId,
         required: true
@@ -31,3 +27,5 @@ const trainingLogSchema = new Schema ({
         required: true
     }
 })
+
+export default mongoose.models?.TrainingLog || mongoose.model("TrainingLog", trainingLogSchema);
