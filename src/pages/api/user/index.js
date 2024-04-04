@@ -1,4 +1,4 @@
-import createUser from "../../../server/mongodb/actions/createUser";
+import createUser from "../../../../server/mongodb/actions/createUser";
 
 export default async function handler(req, res)  {
     try {
