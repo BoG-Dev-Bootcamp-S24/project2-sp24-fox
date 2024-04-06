@@ -1,4 +1,5 @@
-export default function Sidebar() {
+export default function Sidebar({ fullName }) {
+
     return (
         <div class="flex flex-col w-[300px] h-lvh">
             <div class="h-[330px] pt-[50px]">
@@ -40,7 +41,7 @@ export default function Sidebar() {
                         </div>
                         <div class="flex flex-col bg-red-00">
                             <p class="font-bold">
-                                Long Lam
+                                { fullName }
                             </p>
                             <p class="font-normal">
                                 Admin

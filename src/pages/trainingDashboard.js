@@ -10,13 +10,43 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 export default function trainingDashboard() {
 
-    const { id } = useAppContext();
+    // const session = await getSession();
+
+
     const router = useRouter();
+    
+    const [fullName, setFullName] = useState("");
+    
+    
+
     useEffect(() => {
-        console.log(id)
-        if (!id) {
-            router.push("/");
+
+        async function getData() {
+            try {
+                const response = await fetch("http://localhost:3000/api/user/verify", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+    
+                credentials: "include"
+                
+            });
+    
+            const data = await response.text()
+            if (data === "Failure") {
+                router.push("/");
+            } else {
+                setFullName(JSON.parse(data).fullName)
+            }
+            
+            } catch (error) {
+                console.error(error)
+            }
+            
         }
+
+        getData()
     }, [])
     
 
@@ -40,7 +70,7 @@ export default function trainingDashboard() {
 
                 </div>
             </nav>
-            <Sidebar/>
+            <Sidebar fullName={fullName}/>
             <div class="h-16 border-l border-gray-400"></div>
         </main>
     

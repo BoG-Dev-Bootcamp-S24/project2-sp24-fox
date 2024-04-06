@@ -1,11 +1,9 @@
-'use client'
 
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { createContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Router } from "next/router";
-import verify from "./api/user/verify"
 import { set } from "mongoose";
 import { useAppContext } from "@/context";
 export let userLoggedin = createContext(false)
@@ -30,15 +28,22 @@ export default function Home({ verify }) {
     
     try {
       console.log(email)
-      const response = await fetch("http://localhost:3000/api/user/verify?email=" + email + "&password=" + password, {
+      const response = await fetch("http://localhost:3000/api/user/verify", {
        method: "POST",
       headers: {
-      }
-    });
-    
+        "Content-Type": "application/json",
+
+        
+      },
+      body: JSON.stringify({email, password}),
+      credentials: "include"
+    })
+      
         const data = JSON.parse(await response.text());
+        console.log(data)
           if (data.id) {
             setId(data.id);
+            // userLoggedin = createContext(true)
             router.push('/trainingDashboard');         
           } 
       
