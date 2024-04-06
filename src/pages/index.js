@@ -20,9 +20,9 @@ export default function Home({ verify }) {
   
   const router = useRouter()
 
-  const { fullName, setFullName, setId, id } = useAppContext();
+  const { fullName, setFullName, setId, id, setReady, setRed, red, ready } = useAppContext();
 
-  console.log(id)
+  // console.log(id)
 
   async function verifyUser() {
     
@@ -40,15 +40,19 @@ export default function Home({ verify }) {
     })
       
         const data = JSON.parse(await response.text());
-        console.log(data)
+        // console.log(data)
           if (data.id) {
+            setFullName(data.fullName)
             setId(data.id);
+            setReady(true)
+            setRed(false)
             // userLoggedin = createContext(true)
             router.push('/trainingDashboard');         
           } 
       
     } catch (error) {
       setWrong(true)
+      console.log(error)
       alert("Invalid login")
       console.error();
       
@@ -58,13 +62,15 @@ export default function Home({ verify }) {
   function handleForm(event) { event.preventDefault(); } 
   
   
-
+  function hello() {
+    router.push("/trainingDashboard")
+  }
   
   // useEffect(() => {
   //   console.log(email)
   //   console.log(password)
   // }, [email, password])
-  return (
+  return ( ready ? red ? (
 
 <main class="">
 <nav class="bg-white border-gray-300 shadow-md shadow-red-500/40">
@@ -129,5 +135,5 @@ export default function Home({ verify }) {
 
       </div>
     </main>
-  );
+  ): hello() :<div>loading...</div>)
 }

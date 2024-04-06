@@ -1,4 +1,8 @@
-export default function Sidebar({ fullName }) {
+import { useAppContext } from "@/context";
+
+export default function Sidebar() {
+
+    const { fullName } = useAppContext()
 
     return (
         <div class="flex flex-col w-[300px] h-lvh">

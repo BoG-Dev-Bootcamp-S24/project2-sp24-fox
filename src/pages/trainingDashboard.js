@@ -1,5 +1,4 @@
 'use client'
-
 import Sidebar from "@/components/sidebar";
 import { useAppContext } from "@/context";
 import { useRouter } from "next/router";
@@ -10,47 +9,62 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 export default function trainingDashboard() {
 
-    // const session = await getSession();
 
+
+    const { fullName, id, ready, red } = useAppContext()
 
     const router = useRouter();
-    
-    const [fullName, setFullName] = useState("");
-    
-    
+  
+    const [leave, setLeave] = useState(false)
 
-    useEffect(() => {
 
-        async function getData() {
-            try {
-                const response = await fetch("http://localhost:3000/api/user/verify", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
     
-                credentials: "include"
-                
-            });
-    
-            const data = await response.text()
-            if (data === "Failure") {
-                router.push("/");
-            } else {
-                setFullName(JSON.parse(data).fullName)
-            }
+   
+    // useEffect(() => {
+
+    //     async function getData() {
+    //         //         try {
+    //         //             const response = await fetch("http://localhost:3000/api/user/verify", {
+    //         //             method: "POST",
+    //         //             headers: {
+    //         //                 "Content-Type": "application/json"
+    //         //             },
             
-            } catch (error) {
-                console.error(error)
-            }
+    //         //             credentials: "include"
+                        
+    //         //         });
             
-        }
+    //         //         const data = await response.text()
+    //         //         if (data === "Failure") {
+    //         //             router.push("/");
+    //         //         } else {
+    //         //             setFullName(JSON.parse(data).fullName)
+    //         //         }
+                    
+    //         //         } catch (error) {
+    //         //             console.error(error)
+    //         //         }
+    //         console.log(id)
+    //         console.log(fullName)
+    //         if (id === "") {
+    //             setLeave(true)
+    //         } else {
+    //             setLeave(false)
+    //         }
+    //     }
 
-        getData()
-    }, [])
+    //     getData()
+        
+        
+        
+    // }, [fullName, id])
     
+    function hello() {
+        router.push("/")
+    }
 
-    return (
+
+    return ( ready ? (!red ? (
         <main class="overflow-hidden text-black">
             <nav class="bg-white border-gray-300 shadow-md shadow-red-500/40">
                 <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -70,9 +84,9 @@ export default function trainingDashboard() {
 
                 </div>
             </nav>
-            <Sidebar fullName={fullName}/>
+            <Sidebar/>
             <div class="h-16 border-l border-gray-400"></div>
         </main>
     
-    );
+    ) : hello() ): <div>loading...</div>);
 }

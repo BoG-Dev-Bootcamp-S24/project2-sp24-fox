@@ -22,7 +22,7 @@ export default async function handler(req, res)  {
                 res.setHeader('Set-Cookie', cookie.serialize('session' , token))
             }
            
-            console.log(result)
+            // console.log(result)
 
             result ? res.status(200).json(result) : res.status(500).send("Failure")
         }
