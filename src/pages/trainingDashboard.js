@@ -1,21 +1,48 @@
 import Sidebar from "@/components/sidebar";
 import { useRouter } from "next/router";
 import { createContext, useContext, useEffect, useState } from "react";
-import { userLoggedin } from "./index";
-import { userSignup } from "./signUp";
 
 
 
 export default function trainingDashboard() {
 
-    
+    // const session = await getSession();
+
+
     const router = useRouter();
-    let loggedIn = useContext(userLoggedin);
-    let signup = useContext(userSignup);
+    
+    const [fullName, setFullName] = useState("");
+    
+    
+
     useEffect(() => {
-        if (!loggedIn && !signup) {
-            router.push("/");
+
+        async function getData() {
+            try {
+                const response = await fetch("http://localhost:3000/api/user/verify", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+    
+                credentials: "include"
+                
+            });
+    
+            const data = await response.text()
+            if (data === "Failure") {
+                router.push("/");
+            } else {
+                setFullName(JSON.parse(data).fullName)
+            }
+            
+            } catch (error) {
+                console.error(error)
+            }
+            
         }
+
+        getData()
     }, [])
     
 
@@ -39,7 +66,7 @@ export default function trainingDashboard() {
 
                 </div>
             </nav>
-            <Sidebar/>
+            <Sidebar fullName={fullName}/>
             <div class="h-16 border-l border-gray-400"></div>
         </main>
     
