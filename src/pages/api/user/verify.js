@@ -1,9 +1,28 @@
-import loginUser from "../../../../server/mongodb/actions/loginUser"
 
+// import { cookies } from "next/headers";
+import cookie from "cookie";
+import loginUser from "../../../../server/mongodb/actions/loginUser"
+import jwt from "jsonwebtoken";
 export default async function handler(req, res)  {
     try {
         if (req.method == 'POST') {
-            const result = await loginUser(req.query);
+            // console.log(req.body)
+            
+            const session = req.headers.cookie ? cookie.parse(req.headers.cookie) : null;
+            let result;
+            // console.log(session);
+            if (session !== null && session.session) {
+                result = jwt.verify(session.session, "BoG")
+            } else {
+                if (Object.keys(req.body).length == 0) {
+                    return res.status(500).send("Failure");
+                }
+                result = await loginUser(req.body);
+                const token = jwt.sign(result, "BoG");
+                res.setHeader('Set-Cookie', cookie.serialize('session' , token))
+            }
+           
+            // console.log(result)
 
             result ? res.status(200).json(result) : res.status(500).send("Failure")
         }

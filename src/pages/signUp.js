@@ -1,9 +1,53 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-
+import { createContext, useState } from "react";
+import { Router, useRouter } from "next/router";
+export let userSignup = createContext(false);
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+
+  const [fullName, setfullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confPassword, setConfPassword] = useState("");
+  const [admin, setAdmin] = useState(false)
+
+
+
+  
+  const router = useRouter();
+
+  async function registerUser() {
+    try {
+      if (password === confPassword) {
+        const namemail = `fullName=${fullName}&email=${email}&password=${password}&admin=${admin}`
+        const response = await fetch(`http://localhost:3000/api/user?${namemail}`, {
+          method: "POST"
+        });
+        if (await response.text() === "Success") {
+          userSignup = createContext(true)
+          router.push("/trainingDashboard")
+        }
+
+      } else {
+        alert("Passwords do not match")
+      }
+      // const response = await fetch("http://localhost:3000/api/user/", {
+      //  method: "POST"
+      // headers: {
+
+      // }
+    // });
+    } catch (error) {
+      alert("Invalid login");
+      console.error();
+      
+    }
+  }
+
+  function handleForm(event) { event.preventDefault(); } 
+
   return (
 
 <main class="">
@@ -23,18 +67,18 @@ export default function Home() {
   </div>
 
   <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form class="space-y-6" action="#" method="POST">
-      <div>
+    <form class="space-y-6" onSubmit={(e) => {e.preventDefault; handleForm(e); registerUser()}} method="POST">
+      <div> 
         <label for="name" class="block text-md font-medium leading-6 text-gray-900">Name</label>
         <div class="mt-2">
-        <input class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-email" type="text" placeholder="Full Name"></input>
+        <input value={fullName} onInput={e => setfullName(e.target.value)} required id="fullName" class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="Full Name"></input>
         </div>
       </div>
 
       <div>
         <label for="email" class="block text-md font-medium leading-6 text-gray-900">Email</label>
         <div class="mt-2">
-        <input class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-email" type="text" placeholder="Email Address"></input>
+        <input value={email} onInput={e => setEmail(e.target.value)} required id="email" class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="Email Address"></input>
         </div>
       </div>
 
@@ -43,27 +87,24 @@ export default function Home() {
           <label for="password" class="block text-md font-medium leading-6 text-gray-900">Password</label>
         </div>
         <div class="mt-2">
-          <input class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-password" type="text" placeholder="Password"></input>
+          <input value={password} onInput={e => setPassword(e.target.value)} required id="password" class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="Password"></input>
         </div>
         <div class="mt-0">
-          <input class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-password" type="text" placeholder="Confirm Password"></input>
+          <input value={confPassword} onInput={e => setConfPassword(e.target.value)} required id="confPassword" class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="Confirm Password"></input>
         </div>
       </div>
 
 
     <div class="flex items-start space-x-3">
-        <input type="checkbox" class="border-gray-300 rounded h-5 w-5"/>
+        <input onClick={() => setAdmin(!admin)} type="checkbox" class="border-gray-300 rounded h-5 w-5"/>
         <div class="flex flex-col">
             <h1 class="text-gray-700 mt-0.5 font-medium leading-none">Admin Access</h1>
         </div>
     </div>
-
-    </form>
-
-    
+ 
     <br></br>
       <div class="text-center">
-      <button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-lg rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-lg rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
         Sign Up
         <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -71,6 +112,9 @@ export default function Home() {
       </button>
       </div>
 
+    </form>
+
+   
       <div class="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:text-left">
         <p class="mt-5 text-center text-sm text-gray-500">
           Already have an account?
