@@ -1,5 +1,5 @@
+'use client'
 import TrainingLogCard from "@/components/trainingLogCard";
-      'use client'
 import Sidebar from "@/components/sidebar";
 
 import { useAppContext } from "@/context";
@@ -20,52 +20,12 @@ export default function trainingDashboard() {
     const [leave, setLeave] = useState(false)
 
 
-    
-   
-    // useEffect(() => {
 
-    //     async function getData() {
-    //         //         try {
-    //         //             const response = await fetch("http://localhost:3000/api/user/verify", {
-    //         //             method: "POST",
-    //         //             headers: {
-    //         //                 "Content-Type": "application/json"
-    //         //             },
-            
-    //         //             credentials: "include"
-                        
-    //         //         });
-            
-    //         //         const data = await response.text()
-    //         //         if (data === "Failure") {
-    //         //             router.push("/");
-    //         //         } else {
-    //         //             setFullName(JSON.parse(data).fullName)
-    //         //         }
-                    
-    //         //         } catch (error) {
-    //         //             console.error(error)
-    //         //         }
-    //         console.log(id)
-    //         console.log(fullName)
-    //         if (id === "") {
-    //             setLeave(true)
-    //         } else {
-    //             setLeave(false)
-    //         }
-    //     }
-
-    //     getData()
-        
-        
-        
-    // }, [fullName, id])
     
     function hello() {
         router.push("/")
     }
 
-export default function trainingDashboard() {
     return ( ready ? (!red ? (
         <main class="overflow-hidden">
             <div>
