@@ -1,19 +1,20 @@
+'use client'
+
 import Sidebar from "@/components/sidebar";
+import { useAppContext } from "@/context";
 import { useRouter } from "next/router";
 import { createContext, useContext, useEffect, useState } from "react";
-import { userLoggedin } from "./index";
-import { userSignup } from "./signUp";
+
 
 
 
 export default function trainingDashboard() {
 
-    
+    const { id } = useAppContext();
     const router = useRouter();
-    let loggedIn = useContext(userLoggedin);
-    let signup = useContext(userSignup);
     useEffect(() => {
-        if (!loggedIn && !signup) {
+        console.log(id)
+        if (!id) {
             router.push("/");
         }
     }, [])
