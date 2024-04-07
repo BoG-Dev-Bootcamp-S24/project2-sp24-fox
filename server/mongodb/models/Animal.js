@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { ObjectId } from "mongodb"
 const Schema = mongoose.Schema
 
 const animalSchema = new Schema ({
@@ -12,6 +13,7 @@ const animalSchema = new Schema ({
     },
     owner: {
         type: ObjectId,
+        ref: "User",
         required: true
     },
     hoursTrained: {
@@ -19,9 +21,9 @@ const animalSchema = new Schema ({
         required: true
     },
     profilePicture: {
-        type: string,
+        type: String,
         required: true
     }
 })
 
-export default mongoose.models?.Animal || mongoose.model("animal", animalSchema);
+export default mongoose.models?.Animal || mongoose.model("Animal", animalSchema);

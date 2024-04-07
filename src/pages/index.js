@@ -19,7 +19,7 @@ export default function Home({ verify }) {
   
   const router = useRouter()
 
-  const {setFullName, setId, setReady, setRed, red, ready } = useAppContext();
+  const {setFullName, setId, setReady, setRed, red, ready, setAdmin} = useAppContext();
 
   // console.log(id)
 
@@ -41,12 +41,10 @@ export default function Home({ verify }) {
         const data = JSON.parse(await response.text());
         // console.log(data)
           if (data.id) {
-            setFullName(data.fullName)
-            setId(data.id);
             setReady(true)
             setRed(false)
             // userLoggedin = createContext(true)
-            router.push('/trainingDashboard');         
+            router.refresh();         
           } 
       
     } catch (error) {

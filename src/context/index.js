@@ -9,6 +9,7 @@ const AppContext = createContext();
 export default function AppWrapper({ children, userinfo }) {
     let [fullName, setFullName] = useState("")
     let [id, setId] = useState("");
+    let [admin, setAdmin] = useState(false)
     const [ready, setReady] = useState(false)
     const [red, setRed] = useState(false)
     // if (userinfo) {
@@ -35,6 +36,7 @@ export default function AppWrapper({ children, userinfo }) {
         if (data !=="Failure") {
             setFullName(JSON.parse(data).fullName)
             setId(JSON.parse(data).id)
+            setAdmin(JSON.parse(data).adminstatus)
             setReady(true)
         } else {
             setRed(true)
@@ -60,7 +62,9 @@ export default function AppWrapper({ children, userinfo }) {
             ready,
             red,
             setReady,
-            setRed
+            setRed,
+            admin,
+            setAdmin
         }}>
             {children}
         </AppContext.Provider>
