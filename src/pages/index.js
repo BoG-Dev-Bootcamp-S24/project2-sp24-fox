@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { createContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Router } from "next/router";
 import { set } from "mongoose";
 import { useAppContext } from "@/context";
 export let userLoggedin = createContext(false)
@@ -20,7 +19,7 @@ export default function Home({ verify }) {
   
   const router = useRouter()
 
-  const { fullName, setFullName, setId, id, setReady, setRed, red, ready } = useAppContext();
+  const {setFullName, setId, setReady, setRed, red, ready } = useAppContext();
 
   // console.log(id)
 
@@ -72,12 +71,12 @@ export default function Home({ verify }) {
   // }, [email, password])
   return ( ready ? red ? (
 
-<main class="">
-<nav class="bg-white border-gray-300 shadow-md shadow-red-500/40">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a class="flex items-center space-x-3 rtl:space-x-reverse">
+<main className="">
+<nav className="bg-white border-gray-300 shadow-md shadow-red-500/40">
+  <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a className="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="images/appLogo.png" class="h-8"/>
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Progress</span>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap text-black">Progress</span>
     </a>
   </div>
 </nav>

@@ -2,7 +2,7 @@
 
 export default function TrainingLogCard() {
     return (
-        <div className="flex flex-row justify-start items-start bg-white w-full h-[110px] mt-[10px] mb-[10px] rounded-xl drop-shadow-xl">
+        <div className="flex flex-row text-black justify-start items-start bg-white w-full h-[110px] mt-[10px] mb-[10px] rounded-xl drop-shadow-xl">
             <div className="flex flex-col justify-center items-center bg-blue-900 h-full w-[110px] rounded-l-xl">
                 <p className="font-extrabold text-4xl text-white">
                     20

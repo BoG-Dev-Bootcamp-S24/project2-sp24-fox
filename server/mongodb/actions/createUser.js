@@ -10,7 +10,7 @@ export default async function createUser(req) {
     password = await bcrypt.hash(password,10); 
     const newUser = new User({fullName, email, password, admin})
     await newUser.save()
-
+    return {fullName, admin}
   } catch (error) {
     console.log(error)
   }

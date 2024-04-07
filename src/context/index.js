@@ -1,24 +1,5 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import jwt from "jsonwebtoken"
-import { useRouter } from 'next/router';
-import { redirect } from 'next/dist/server/api-utils';
-
-export async function getServerSideProps(context){
-    const session = context.req.cookies;
-    // return {props: {userinfo: "hello"}}
-    console.log(context)
-    return {props: {userinfo: context.req.cookies}}
-    if (session) {
-        
-        return {props: {userinfo: jwt.verify(session, "BoG")}}
-    } else {
-        return {props: {userinfo: null}}
-    }
-
-    
-} 
-
 
 export function useAppContext() {
     return useContext(AppContext);
@@ -34,10 +15,11 @@ export default function AppWrapper({ children, userinfo }) {
     //     setFullName(userinfo.fullName)
     //     setId(userinfo.id);
     // } 
-    const router = useRouter()
+    
     useEffect(() => {
         
     async function getData() {
+        
         try {
             const response = await fetch("http://localhost:3000/api/user/verify", {
             method: "POST",
