@@ -1,7 +1,15 @@
 import AnimalCard from "@/components/animalCard";
 import Sidebar from "@/components/sidebar";
+import { useAppContext } from "@/context";
 
 export default function animalsDashboard() {
+    const { animals, fullName } = useAppContext()
+    
+    function displayAnimals() {
+        return animals.map(element => {
+           return <div><AnimalCard owner={fullName} name={element.name} breed={element.breed} hours={element.hoursTrained} pic={element.profilePicture}/></div>
+        })
+    }
     return (
         <main class="overflow-hidden">
             <div>
@@ -42,8 +50,8 @@ export default function animalsDashboard() {
                         </div>
                     </div>
                     <hr className="bg-gray-300 w-full h-[2px]"></hr>
-                    <div className="flex flex-row flex-wrap justify-start items-start w-full h-screen ml-[90px] mt-[20px] content-start">
-                        <AnimalCard/>
+                    <div className="flex flex-row flex-wrap justify-start items-start w-full h-screen ml-[90px] mt-[20px] content-start text-black">
+                        {displayAnimals()}
                     </div>
                 </div>
             </div>

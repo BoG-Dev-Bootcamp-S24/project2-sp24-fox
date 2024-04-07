@@ -6,11 +6,8 @@ import jwt from "jsonwebtoken";
 export default async function handler(req, res)  {
     try {
         if (req.method == 'POST') {
-            // console.log(req.body)
-            
             const session = req.headers.cookie ? cookie.parse(req.headers.cookie) : null;
             let result;
-            // console.log(session);
             if (session !== null && session.session) {
                 result = jwt.verify(session.session, "BoG")
             } else {
@@ -26,9 +23,6 @@ export default async function handler(req, res)  {
                 }
                 
             }
-           
-            // console.log(result)
-
             result ? res.status(200).json(result) : res.status(500).send("Failure")
         }
     } catch (error) {
