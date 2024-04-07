@@ -26,10 +26,10 @@ export default async function loginUser(req) {
                 // return "Success"
 
             } else {
-                // return;
+                return;
             }
         } else {
-            // return;
+            return;
         }
         
         

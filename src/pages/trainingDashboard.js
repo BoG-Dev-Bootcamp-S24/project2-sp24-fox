@@ -13,7 +13,7 @@ export default function trainingDashboard() {
 
 
 
-    const { fullName, id, ready, red } = useAppContext()
+    const { fullName, id, ready, red} = useAppContext()
 
     const router = useRouter();
     const [leave, setLeave] = useState(false)
@@ -33,7 +33,7 @@ export default function trainingDashboard() {
                     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                         <a class="flex items-center space-x-3 rtl:space-x-reverse">
                             <img src="images/appLogo.png" class="h-8"/>
-                            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Progress</span>
+                            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Progress</span>
                         </a>
                         <a class="flex items-center space-x-3 rtl:space-x-reverse">
                         <input type="text" id="simple-search" class="bg-gray-50 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-2.5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required />
@@ -48,7 +48,7 @@ export default function trainingDashboard() {
                 </nav>
             </div>
             <div class="flex flex-row">
-                <Sidebar/>
+                <Sidebar currentPage={"training"}/>
                 <div class="flex flex-col w-screen">
                     <div class="flex flex-row justify-between items-end w-full h-[70px]">
                         <p class="text-2xl mb-[10px] ml-[50px] text-gray-500 font-medium">

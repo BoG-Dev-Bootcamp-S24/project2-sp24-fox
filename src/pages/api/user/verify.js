@@ -18,8 +18,13 @@ export default async function handler(req, res)  {
                     return res.status(500).send("Failure");
                 }
                 result = await loginUser(req.body);
-                const token = jwt.sign(result, "BoG");
-                res.setHeader('Set-Cookie', cookie.serialize('session' , token))
+                if (result) {
+                    const token = jwt.sign(result, "BoG");
+                    res.setHeader('Set-Cookie', cookie.serialize('session' , token))
+                } else {
+                    res.status(500).send("Failure")
+                }
+                
             }
            
             // console.log(result)
