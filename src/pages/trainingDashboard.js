@@ -13,15 +13,32 @@ export default function trainingDashboard() {
 
 
 
-    const { fullName, id, ready, red} = useAppContext()
+    const { ready, red, logs, fullName} = useAppContext()
 
     const router = useRouter();
-    const [leave, setLeave] = useState(false)
-  
-    
 
+    const [isLogs, setIsLogs] = useState(false);
 
-    
+    const [mylogs, setMyLogs] = useState([])
+
+    useEffect(() => {
+        async function displayLogs() {
+            const arr = await Promise.all(logs.map(async(element) =>  {
+                const id = element.animal;
+                const response = await fetch("/api/animal?" + `id=${id}`);
+                const result = await response.text();
+                console.log(element.date)
+               return <div><TrainingLogCard breed={JSON.parse(result).breed} hours={element.hours} description={element.description} date={element.date} title={element.title} name={JSON.parse(result).name} owner={fullName} /></div>
+            }))
+            console.log(arr)
+            setMyLogs(arr);
+            setIsLogs(true)
+        } 
+
+        displayLogs()
+        
+    }, [])
+
     function hello() {
         router.push("/")
     }
@@ -66,8 +83,8 @@ export default function trainingDashboard() {
                         </div>
                     </div>
                     <hr className="bg-gray-300 w-full h-[2px]"></hr>
-                    <div className="flex flex-col justify-start items-center w-10/12 h-screen ml-[100px] mt-[20px]">
-                        <TrainingLogCard/>
+                    <div className="flex flex-col justify-start items-center w-10/12 h-screen ml-28 mt-[20px]">
+                        {isLogs ? mylogs : "loading..."}
                     </div>
                 </div>
             </div>

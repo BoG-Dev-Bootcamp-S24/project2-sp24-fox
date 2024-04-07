@@ -19,7 +19,7 @@ export default function Home({ verify }) {
   
   const router = useRouter()
 
-  const {setFullName, setId, setReady, setRed, red, ready, setAdmin} = useAppContext();
+  const {setReady, setRed, red, ready} = useAppContext();
 
   // console.log(id)
 
@@ -39,11 +39,9 @@ export default function Home({ verify }) {
     })
       
         const data = JSON.parse(await response.text());
-        // console.log(data)
           if (data.id) {
             setReady(true)
             setRed(false)
-            // userLoggedin = createContext(true)
             router.refresh();         
           } 
       

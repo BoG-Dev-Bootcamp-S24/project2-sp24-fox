@@ -12,6 +12,8 @@ export default function AppWrapper({ children, userinfo }) {
     let [admin, setAdmin] = useState(false)
     const [ready, setReady] = useState(false)
     const [red, setRed] = useState(false)
+    const [animals, setAnimals] = useState([])
+    const [logs, setLogs] = useState([])
     // if (userinfo) {
     //     setFullName(userinfo.fullName)
     //     setId(userinfo.id);
@@ -33,10 +35,12 @@ export default function AppWrapper({ children, userinfo }) {
         });
 
         const data = await response.text()
-        if (data !=="Failure") {
+        if (data !== "Failure") {
             setFullName(JSON.parse(data).fullName)
             setId(JSON.parse(data).id)
             setAdmin(JSON.parse(data).adminstatus)
+            setAnimals(JSON.parse(data).animals)
+            setLogs(JSON.parse(data).logs)
             setReady(true)
         } else {
             setRed(true)
@@ -56,15 +60,14 @@ export default function AppWrapper({ children, userinfo }) {
     return (
         <AppContext.Provider value={{
             fullName,
-            setFullName,
             id,
-            setId,
             ready,
             red,
             setReady,
             setRed,
             admin,
-            setAdmin
+            animals,
+            logs
         }}>
             {children}
         </AppContext.Provider>
