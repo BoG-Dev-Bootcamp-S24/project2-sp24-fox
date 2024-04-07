@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { createContext, useState } from "react";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import { useAppContext } from "@/context";
 export let userSignup = createContext(false);
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,8 @@ export default function Home() {
   
   const router = useRouter();
 
+  const {setFullName, setId, setReady, setRed} = useAppContext()
+
   async function registerUser() {
     try {
       if (password === confPassword) {
@@ -25,21 +28,19 @@ export default function Home() {
         const response = await fetch(`http://localhost:3000/api/user?${namemail}`, {
           method: "POST"
         });
+        
         if (await response.text() === "Success") {
-          userSignup = createContext(true)
-          router.push("/trainingDashboard")
+          alert("Success! You can now login")
+          router.refresh()
+          window.location.href = "/"
+          
         }
 
       } else {
         alert("Passwords do not match")
       }
-      // const response = await fetch("http://localhost:3000/api/user/", {
-      //  method: "POST"
-      // headers: {
-
-      // }
-    // });
     } catch (error) {
+      console.log(error)
       alert("Invalid login");
       console.error();
       

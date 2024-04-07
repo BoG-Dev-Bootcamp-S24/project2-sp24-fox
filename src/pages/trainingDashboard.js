@@ -16,9 +16,9 @@ export default function trainingDashboard() {
     const { fullName, id, ready, red } = useAppContext()
 
     const router = useRouter();
-  
     const [leave, setLeave] = useState(false)
-
+  
+    
 
 
     

@@ -1,12 +1,29 @@
 
 import { useAppContext } from "@/context";
+import { useRouter } from "next/navigation";
 
 export default function Sidebar() {
 
     const { fullName } = useAppContext()
 
+    const router = useRouter()
+
+    async function deleteCookie() {
+        try {
+            const result = await fetch("/api/user", {
+                method: "DELETE",
+            });
+            if (await result.text() === "Success") {
+                router.refresh()
+            }
+        } catch (error) {
+            console.error(error)
+        }
+        
+    }
+
     return (
-        <div class="flex flex-col w-[300px] h-lvh">
+        <div class="flex flex-col w-[300px] h-lvh text-black">
             <div class="h-[330px] pt-[50px]">
 
                 <button class="flex flex-row justify-start items-center bg-gray-0 hover:bg-red-400 w-[240px] h-[45px] ml-[15px] pl-[15px] rounded-[13px] text-left text-lg">
@@ -42,25 +59,16 @@ export default function Sidebar() {
                             <div class="flex flex-row justify-center items-center bg-red-500 w-[40px] h-[40px] font-bold text-lg rounded-[50px] ml-[20px] mr-[15px] text-white">
                                 L
                             </div>
-                            <div class="flex flex-col text-gray-600">
-                                <p class="font-bold">
-                                    Long Lam
-                                </p>
-                                <p class="font-normal text-gray-600">
-                                    Admin
-                                </p>
-                            </div>
-                        </div>
-                        <div class="flex flex-col bg-red-00">
+                            <div class="flex flex-col bg-red-00">
                             <p class="font-bold">
                                 { fullName }
                             </p>
                             <p class="font-normal">
                                 Admin
                             </p>
-
+                        </div>
                         <div class="bg-blue-00 w-[50px]">
-                            <button class="bg-green-00 w-[40px] h-[35px] pl-[10px] ml-[10px]">
+                            <button class="bg-green-00 w-[40px] h-[35px] pl-[10px] ml-[20px]" onClick={() => deleteCookie()}>
                                 <img src="images/logoutLogo.png" class="h-6"></img>
                             </button>
                         </div>
