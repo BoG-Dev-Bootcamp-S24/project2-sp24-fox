@@ -30,14 +30,12 @@ export default function trainingDashboard() {
                 console.log(element.date)
                return <div><TrainingLogCard breed={JSON.parse(result).breed} hours={element.hours} description={element.description} date={element.date} title={element.title} name={JSON.parse(result).name} owner={fullName} /></div>
             }))
-            console.log(arr)
             setMyLogs(arr);
-            setIsLogs(true)
         } 
 
         displayLogs()
         
-    }, [])
+    }, [mylogs])
 
     function hello() {
         router.push("/")
@@ -84,7 +82,7 @@ export default function trainingDashboard() {
                     </div>
                     <hr className="bg-gray-300 w-full h-[2px]"></hr>
                     <div className="flex flex-col justify-start items-center w-10/12 h-screen ml-28 mt-[20px]">
-                        {isLogs ? mylogs : "loading..."}
+                        {mylogs}
                     </div>
                 </div>
             </div>
