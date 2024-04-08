@@ -27,8 +27,13 @@ export default function Sidebar( {currentPage} ) {
             document.getElementById("training").classList.add("bg-red-600", "text-white")
         } else if (currentPage === "animals") {
             document.getElementById("animals").classList.add("bg-red-600", "text-white")
+        } else if (currentPage === "userDash") {
+            if (document.getElementById("userDash")) {
+                document.getElementById("userDash").classList.add("bg-red-600", "text-white")
+            }
+            
         }
-    }, [])
+    }, [admin])
 
 
     return (
@@ -55,7 +60,7 @@ export default function Sidebar( {currentPage} ) {
                         <img src="images/inactiveAllAnimalsLogo.png" class="h-6 pr-[20px]"></img>
                         All animals
                     </button>
-                    <button class="flex flex-row justify-start items-center text-gray-600 hover:text-white hover:bg-red-600 w-[240px] h-[45px] ml-[15px] pl-[15px] rounded-[13px] text-left text-lg">
+                    <button onClick={() => router.push("/userDashboard")} id="userDash" class="flex flex-row justify-start items-center text-gray-600 hover:text-white hover:bg-red-600 w-[240px] h-[45px] ml-[15px] pl-[15px] rounded-[13px] text-left text-lg">
                         <img src="images/inactiveAllUsersLogo.png" class="h-6 pr-[20px]"></img>
                         All users
                     </button>

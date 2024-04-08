@@ -1,10 +1,35 @@
 import Sidebar from "@/components/sidebar";
 import UserCard from "@/components/userCard";
+import { useAppContext } from "@/context";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 
 export default function userDashboard() {
-    return (
-        <main class="overflow-hidden">
+
+    const {ready, red} = useAppContext()
+
+    const [users, setUser] = useState([])
+
+    const router = useRouter()
+
+    useEffect(() => {
+        async function getData() {
+            const result = await fetch("/api/admin/users")
+
+            setUser(JSON.parse(await result.text()))
+        }
+
+        getData()
+
+    }, [])
+
+    function hello() {
+        router.push("/")
+    }
+
+    return (ready ? (!red ? (
+        <main class="overflow-hidden text-black">
             <div>
                 <nav class="bg-white border-gray-300 shadow-md shadow-red-500/40">
                     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -25,7 +50,7 @@ export default function userDashboard() {
                 </nav>
             </div>
             <div class="flex flex-row">
-                <Sidebar/>
+                <Sidebar currentPage={"userDash"}/>
                 <div class="flex flex-col w-screen">
                     <div class="flex flex-row justify-between items-end w-full h-[70px]">
                         <p class="text-2xl mb-[10px] ml-[50px] text-gray-500 font-medium">
@@ -44,10 +69,12 @@ export default function userDashboard() {
                     </div>
                     <hr className="bg-gray-300 w-full h-[2px]"></hr>
                     <div className="flex flex-row flex-wrap content-start justify-start items-start w-10/12 h-screen ml-24 mt-[20px]">
-                        <UserCard/>
+                       {users.map((element) => {
+                        return <UserCard name={element.fullName} admin={element.admin}/>
+                       })}
                     </div>
                 </div>
             </div>
         </main>
-    );
+    ) : hello() ): <div>loading...</div>);
 }

@@ -1,23 +1,29 @@
 import AnimalCard from "@/components/animalCard";
 import Sidebar from "@/components/sidebar";
 import { useAppContext } from "@/context";
+import { useRouter } from "next/navigation";
 
 export default function animalsDashboard() {
-    const { animals, fullName } = useAppContext()
+    const { animals, fullName, ready, red } = useAppContext()
     
+    const router = useRouter()
+
     function displayAnimals() {
         return animals.map(element => {
            return <div><AnimalCard owner={fullName} name={element.name} breed={element.breed} hours={element.hoursTrained} pic={element.profilePicture}/></div>
         })
     }
-    return (
-        <main class="overflow-hidden">
+    function hello() {
+        router.push("/")
+    }
+    return (ready ? (!red ? (
+        <main class="overflow-hidden text-black">
             <div>
                 <nav class="bg-white border-gray-300 shadow-md shadow-red-500/40">
                     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                         <a class="flex items-center space-x-3 rtl:space-x-reverse">
                             <img src="images/appLogo.png" class="h-8"/>
-                            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Progress</span>
+                            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Progress</span>
                         </a>
                         <a class="flex items-center space-x-3 rtl:space-x-reverse">
                         <input type="text" id="simple-search" class="bg-gray-50 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-2.5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required />
@@ -56,5 +62,5 @@ export default function animalsDashboard() {
                 </div>
             </div>
         </main>
-    );
+    ) : hello() ): <div>loading...</div>);
 }
