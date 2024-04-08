@@ -1,4 +1,4 @@
-import CreateForm from "@/components/createForm";
+import CreateForm from "@/components/createAnimalForm";
 import Sidebar from "@/components/sidebar";
 
 

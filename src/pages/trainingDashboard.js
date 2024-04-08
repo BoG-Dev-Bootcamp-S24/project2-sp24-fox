@@ -13,7 +13,7 @@ export default function trainingDashboard() {
 
 
 
-    const { ready, red, logs, fullName} = useAppContext()
+    const { ready, red, logs, fullName, animals} = useAppContext()
 
     const router = useRouter();
 
@@ -27,7 +27,6 @@ export default function trainingDashboard() {
                 const id = element.animal;
                 const response = await fetch("/api/animal?" + `id=${id}`);
                 const result = await response.text();
-                console.log(element.date)
                return <div><TrainingLogCard breed={JSON.parse(result).breed} hours={element.hours} description={element.description} date={element.date} title={element.title} name={JSON.parse(result).name} owner={fullName} /></div>
             }))
             setMyLogs(arr);
@@ -70,7 +69,15 @@ export default function trainingDashboard() {
                             Training Logs
                         </p>
                         <div class="w-[150px] mr-[50px]">
-                            <button class=" w-[40px] h-[50px] mr-[200px]">
+                            <button onClick={() => {
+                                if (animals.length !== 0) {
+                                    router.push("/createTrainingLog")
+                                } else {
+                                    alert("Please create an animal profile!")
+                                }
+                                
+                                
+                                }} class=" w-[40px] h-[50px] mr-[200px]">
                                 <div class="flex flex-row justify-center items-center w-[150px]">
                                     <img src="images/createNewLogo.png" class="h-5 pr-[5px]"></img>
                                     <p class="font-medium text-gray-500">

@@ -8,7 +8,7 @@ export default async function createAnimal(req) {
         let { name, breed, owner, hoursTrained, profilePicture } = req
         const newAnimal = new Animal({name, breed, owner: new ObjectId(owner), hoursTrained, profilePicture})
         await newAnimal.save()
-        return "Success"
+        return newAnimal;
       } catch (error) {
         console.log(error)
       }
