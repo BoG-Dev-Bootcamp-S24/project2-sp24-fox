@@ -32,7 +32,7 @@ export default function Sidebar( {currentPage} ) {
 
 
     return (
-        <div class="flex flex-col w-[300px] h-lvh text-black">
+        <div class="flex flex-row w-[300px] h-lvh text-black">
             <div class="h-[330px] pt-[50px]">
                 <button onClick={() => router.push("/trainingDashboard")} id="training" class="flex flex-row justify-start items-center bg-gray-0 hover:text-white hover:bg-red-600 w-[240px] h-[45px] ml-[15px] pl-[15px] rounded-[13px] text-left text-lg">
                     <img src="images/inactiveTrainingLogs.png" class="h-6 pr-[20px]"></img>
@@ -77,15 +77,15 @@ export default function Sidebar( {currentPage} ) {
                                 {admin ? "Admin" : ""}
                             </p>
                         </div>
-                        <div class="bg-blue-00 w-[50px]">
-                            <button class="bg-green-00 w-[40px] h-[35px] pl-[10px] ml-[20px]" onClick={() => deleteCookie()}>
+                        <div class="w-[50px]">
+                            <button class="bg-green-00 w-[40px] h-[35px] pl-[10px] ml-[35px]" onClick={() => deleteCookie()}>
                                 <img src="images/logoutLogo.png" class="h-6"></img>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col w-[1px] h-screen">
+            <div class="flex flex-col w-[1px] h-screen ml-[15px]">
                 <hr class="bg-gray-300 w-[1px] h-screen"></hr>
             </div>
         </div>
