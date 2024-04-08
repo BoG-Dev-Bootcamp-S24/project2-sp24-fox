@@ -6,7 +6,7 @@ export function useAppContext() {
 }
 const AppContext = createContext();
 
-export default function AppWrapper({ children, userinfo }) {
+export default function AppWrapper({ children }) {
     let [fullName, setFullName] = useState("")
     let [id, setId] = useState("");
     let [admin, setAdmin] = useState(false)
@@ -14,6 +14,7 @@ export default function AppWrapper({ children, userinfo }) {
     const [red, setRed] = useState(false)
     const [animals, setAnimals] = useState([])
     const [logs, setLogs] = useState([])
+    const [newstuff, setNewStuff] = useState(false)
     // if (userinfo) {
     //     setFullName(userinfo.fullName)
     //     setId(userinfo.id);
@@ -49,7 +50,7 @@ export default function AppWrapper({ children, userinfo }) {
         
         } catch (error) {
             console.error(error)
-        }
+        } 
         
     }
     getData()
@@ -67,7 +68,10 @@ export default function AppWrapper({ children, userinfo }) {
             setRed,
             admin,
             animals,
-            logs
+            setLogs,
+            logs,
+            setNewStuff,
+            newstuff
         }}>
             {children}
         </AppContext.Provider>

@@ -45,7 +45,7 @@ export default function animalsDashboard() {
                             Animals
                         </p>
                         <div class="w-[150px] mr-[50px]">
-                            <button class=" w-[40px] h-[50px] mr-[200px]">
+                            <button onClick={() => router.push("/createAnimal")} class=" w-[40px] h-[50px] mr-[200px]">
                                 <div class="flex flex-row justify-center items-center w-[150px]">
                                     <img src="images/createNewLogo.png" class="h-5 pr-[5px]"></img>
                                     <p class="font-medium text-gray-500">

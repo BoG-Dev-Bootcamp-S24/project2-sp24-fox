@@ -17,7 +17,9 @@ export default async function handler(req, res)  {
                 result = await loginUser(req.body);
                 if (result) {
                     const token = jwt.sign(result, "BoG");
-                    res.setHeader('Set-Cookie', cookie.serialize('session' , token))
+                    res.setHeader('Set-Cookie', cookie.serialize('session' , token, {
+                        path: "/"
+                    }))
                 } else {
                     res.status(500).send("Failure")
                 }

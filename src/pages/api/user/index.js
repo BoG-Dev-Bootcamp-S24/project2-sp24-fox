@@ -13,7 +13,7 @@ export default async function handler(req, res)  {
         } else if (req.method == "DELETE") {
             res.setHeader('Set-Cookie', cookie.serialize('session' , "", {
                 expires: new Date(0),
-                path: '/api/user'
+                path: '/'
             }))
             res.status(200).send("Success")
         }
