@@ -25,7 +25,7 @@ export default function createTrainingLog() {
                 </nav>
             </div>
             <div class="flex flex-row">
-                <Sidebar/>
+                <Sidebar currentPage={"training"}/>
                 <div class="flex flex-col w-screen">
                     <div class="flex flex-row justify-between items-end w-full h-[70px]">
                         <p class="text-2xl mb-[10px] ml-[50px] text-gray-500 font-medium">

@@ -109,7 +109,7 @@ export default function CreateForm() {
             </p>
             <textarea onChange={(e) => setNote(e.target.value)} type="text" className="w-full h-[110px] border-[2px] border-gray-300 rounded-md pl-[20px] pr-[20px] pt-3 mb-[10px] text-start focus:outline-gray-500"></textarea>
             <div className="flex flex-row">
-                <button className="w-[200px] h-[35px] border-[2px] border-red-500 text-red-500 rounded-md mt-[10px] mr-[20px] hover:bg-red-500 hover:text-white">
+                <button onClick={() => router.push("/trainingDashboard")} type="button" className="w-[200px] h-[35px] border-[2px] border-red-500 text-red-500 rounded-md mt-[10px] mr-[20px] hover:bg-red-500 hover:text-white">
                     Cancel
                 </button>
                 <button type="submit" className="w-[200px] h-[35px] border-[2px] border-red-500 text-red-500 rounded-md mt-[10px] hover:bg-red-500 hover:text-white">

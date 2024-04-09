@@ -34,7 +34,7 @@ export default function trainingDashboard() {
 
         displayLogs()
         
-    }, [mylogs])
+    }, [logs])
 
     function hello() {
         router.push("/")
@@ -88,7 +88,7 @@ export default function trainingDashboard() {
                         </div>
                     </div>
                     <hr className="bg-gray-300 w-full h-[2px]"></hr>
-                    <div className="flex flex-col justify-start items-center w-10/12 h-screen ml-28 mt-[20px]">
+                    <div className="flex flex-col justify-start items-center w-10/12 h-[82%] ml-28 mt-[20px] overflow-y-scroll">
                         {mylogs}
                     </div>
                 </div>
