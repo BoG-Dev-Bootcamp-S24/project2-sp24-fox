@@ -27,8 +27,20 @@ export default function CreateForm() {
 
                 credentials: "include"
             })
+            const nextResponse = await fetch("/api/animal" , {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+            
+                    
+                  },
+                body: JSON.stringify({animal: animalId, hours}),
+
+                credentials: "include"
+            })
             const result = await response.text()
-            if (result === "Success") {
+            const newResult = await nextResponse.text()
+            if (result === "Success" && newResult === "Success") {
                 alert("Success!")
                 router.refresh()
                 window.location.href = '/trainingDashboard'
@@ -54,7 +66,6 @@ export default function CreateForm() {
             </p>
             <select required onChange={(e) => {
                 animals.forEach(element => {
-                    console.log(element)
                     if (e.target.options[e.target.selectedIndex].id === element.name) {
                         setAnimalId(element._id)
 

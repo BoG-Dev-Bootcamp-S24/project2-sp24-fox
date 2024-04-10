@@ -1,10 +1,11 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
+import { Inter, Oswald } from "next/font/google";
 import { createContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAppContext } from "@/context";
 export let userSignup = createContext(false);
 const inter = Inter({ subsets: ["latin"] });
+const oswald = Oswald({ subsets: ["latin"] })
 
 export default function Home() {
 
@@ -52,11 +53,11 @@ export default function Home() {
   return (
 
 <main class="">
-<nav class="bg-white border-gray-300 shadow-md shadow-red-500/40">
+<nav class={`bg-white border-gray-300 shadow-md shadow-black-500/40 text-black ${oswald.className}`}>
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a class="flex items-center space-x-3 rtl:space-x-reverse">
+    <a class="flex items-center space-x-1 rtl:space-x-reverse">
         <img src="images/appLogo.png" class="h-8"/>
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Progress</span>
+        <span class="self-center text-3xl font-semibold whitespace-nowrap">Progress</span>
     </a>
   </div>
 </nav>
@@ -70,34 +71,50 @@ export default function Home() {
   <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
     <form class="space-y-6" onSubmit={(e) => {e.preventDefault; handleForm(e); registerUser()}} method="POST">
       <div> 
-        <label for="name" class="block text-md font-medium leading-6 text-gray-900">Name</label>
-        <div class="mt-2">
-        <input value={fullName} onInput={e => setfullName(e.target.value)} required id="fullName" class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="Full Name"></input>
+        <div class="mt-2 relative">
+        <input value={fullName} onInput={e => setfullName(e.target.value)} required id="fullName" class="focus:outline-none focus:shadow-outline appearance-none block w-full placeholder:text-black text-black py-1 leading-tight" type="text" placeholder="Full Name"></input>
         </div>
+        <div className="inset-x-0 bottom-0 h-[2px] bg-red-500 rounded-b"></div>
       </div>
 
       <div>
-        <label for="email" class="block text-md font-medium leading-6 text-gray-900">Email</label>
-        <div class="mt-2">
-        <input value={email} onInput={e => setEmail(e.target.value)} required id="email" class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="Email Address"></input>
+        <div class="mt-2 relative">
+        <input value={email} onInput={e => setEmail(e.target.value)} required id="email" class="focus:outline-none focus:shadow-outline appearance-none block w-full placeholder:text-black text-black py-1 leading-tight" type="text" placeholder="Email"></input>
         </div>
-      </div>
-
-      <div>
-        <div class="flex items-center justify-between">
-          <label for="password" class="block text-md font-medium leading-6 text-gray-900">Password</label>
-        </div>
-        <div class="mt-2">
-          <input value={password} onInput={e => setPassword(e.target.value)} required id="password" class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="Password"></input>
-        </div>
-        <div class="mt-0">
-          <input value={confPassword} onInput={e => setConfPassword(e.target.value)} required id="confPassword" class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="Confirm Password"></input>
-        </div>
+        <div className="inset-x-0 bottom-0 h-[2px] bg-red-500 rounded-b"></div>
       </div>
 
 
-    <div class="flex items-start space-x-3">
-        <input onClick={() => setAdmin(!admin)} type="checkbox" class="border-gray-300 rounded h-5 w-5"/>
+        <div class="mt-2 relative">
+          <input value={password} onInput={e => setPassword(e.target.value)} required id="password" class="focus:outline-none focus:shadow-outline appearance-none block w-full placeholder:text-black text-black py-1 leading-tight" type="text" placeholder="Password"></input>
+          <div className="inset-x-0 bottom-0 h-[2px] bg-red-500 rounded-b"></div>
+        </div>
+        
+        <div class="mt-2 relative">
+          <input value={confPassword} onInput={e => setConfPassword(e.target.value)} required id="confPassword" class="focus:outline-none focus:shadow-outline appearance-none block w-full placeholder:text-black text-black py-1 leading-tight" type="text" placeholder="Confirm Password"></input>
+          <div className="inset-x-0 bottom-0 h-[2px] bg-red-500 rounded-b"></div>
+        </div>
+        
+
+
+
+    <div class="flex items-start space-x-2">
+        <input onClick={() => setAdmin(!admin)} type="checkbox" className="  accent-red-600  checked:bg-red-600 focus:ring-0 h-5 w-5"/>
+        <svg
+    className="
+      absolute 
+      w-4 h-4 mt-1
+      hidden peer-checked:block"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="20 6 9 17 4 12"></polyline>
+  </svg>
         <div class="flex flex-col">
             <h1 class="text-gray-700 mt-0.5 font-medium leading-none">Admin Access</h1>
         </div>
@@ -105,11 +122,8 @@ export default function Home() {
  
     <br></br>
       <div class="text-center">
-      <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-lg rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <button type="submit" class="text-white w-full bg-red-700 hover:bg-red-800 focus:ring-4  focus:outline-none focus:ring-blue-300 text-lg rounded-lg px-5 py-1.5 text-center items-center">
         Sign Up
-        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-        </svg>
       </button>
       </div>
 
@@ -117,9 +131,9 @@ export default function Home() {
 
    
       <div class="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:text-left">
-        <p class="mt-5 text-center text-sm text-gray-500">
+        <p class="mt-5 text-center text-sm text-black">
           Already have an account?
-          <a href="/." class="font-semibold leading-6 text-red-600 hover:text-red-500" style={{marginLeft: 2.5 + 'px'}}>Click Here to Log In</a>
+          <a href="/." class="font-bold leading-6 text-black-600 hover:text-red-500" style={{marginLeft: 2.5 + 'px'}}>Log In</a>
         </p>
       </div>
 

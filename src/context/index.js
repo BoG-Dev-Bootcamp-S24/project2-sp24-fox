@@ -26,7 +26,6 @@ export default function AppWrapper({ children }) {
         
         try {
             const response = await fetch("http://localhost:3000/api/user/verify", {
-            method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
