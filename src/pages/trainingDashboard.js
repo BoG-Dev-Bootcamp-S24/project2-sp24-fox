@@ -5,9 +5,10 @@ import Sidebar from "@/components/sidebar";
 import { useAppContext } from "@/context";
 import { useRouter } from "next/router";
 import { createContext, useContext, useEffect, useState } from "react";
+import { Oswald } from "next/font/google";
 
 
-
+const oswald = Oswald({ subsets: ["latin"] })
 
 export default function trainingDashboard() {
 
@@ -43,11 +44,11 @@ export default function trainingDashboard() {
     return ( ready ? (!red ? (
         <main class="overflow-hidden">
             <div>
-                <nav class="bg-white border-gray-300 shadow-md shadow-red-500/40">
-                    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                        <a class="flex items-center space-x-3 rtl:space-x-reverse">
+                <nav class="bg-white border-gray-300 shadow-md shadow-black-500/40">
+                    <div class={`max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 ${oswald.className}`}>
+                        <a class="flex items-center space-x-1 rtl:space-x-reverse">
                             <img src="images/appLogo.png" class="h-8"/>
-                            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Progress</span>
+                            <span class="self-center text-2xl font-medium whitespace-nowrap dark:text-black">Progress</span>
                         </a>
                         <a class="flex items-center space-x-3 rtl:space-x-reverse">
                         <input type="text" id="simple-search" class="bg-gray-50 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-2.5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required />
@@ -88,7 +89,7 @@ export default function trainingDashboard() {
                         </div>
                     </div>
                     <hr className="bg-gray-300 w-full h-[2px]"></hr>
-                    <div className="flex flex-col justify-start items-center w-10/12 h-[82%] ml-28 mt-[20px] overflow-y-scroll">
+                    <div className="flex flex-col justify-start items-center w-10/12 ml-28 max-h-[50rem] mt-[20px] overflow-y-auto">
                         {mylogs}
                     </div>
                 </div>

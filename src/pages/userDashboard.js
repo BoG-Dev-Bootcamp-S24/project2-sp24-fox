@@ -1,9 +1,12 @@
 import Sidebar from "@/components/sidebar";
 import UserCard from "@/components/userCard";
 import { useAppContext } from "@/context";
+import { Oswald } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+
+const oswald = Oswald({subsets: ["latin"]})
 
 export default function userDashboard() {
 
@@ -31,11 +34,11 @@ export default function userDashboard() {
     return (ready ? (!red ? (
         <main class="overflow-hidden text-black">
             <div>
-                <nav class="bg-white border-gray-300 shadow-md shadow-red-500/40">
+                <nav class={`bg-white border-gray-300 shadow-md shadow-black-500/40 ${oswald.className}`}>
                     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                        <a class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <a class="flex items-center space-x-1 rtl:space-x-reverse">
                             <img src="images/appLogo.png" class="h-8"/>
-                            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Progress</span>
+                            <span class="self-center text-2xl font-medium dark:text-black">Progress</span>
                         </a>
                         <a class="flex items-center space-x-3 rtl:space-x-reverse">
                         <input type="text" id="simple-search" class="bg-gray-50 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-2.5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required />
