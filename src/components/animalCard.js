@@ -8,7 +8,7 @@ export default function AnimalCard({ owner, name, breed, hours, pic}) {
                 <div class="flex flex-row justify-center items-center bg-red-500 w-[35px] h-[35px] font-bold text-lg rounded-[50px] ml-[15px] mr-[15px] text-white">
                 { owner.substr(0,1).toUpperCase() }
                 </div>
-                <div class="flex flex-col justify-start items-start w-[250px] h-[55px] font-bold text-lg">
+                <div class="flex flex-col justify-start items-start w-fit h-[55px] font-bold text-lg">
                     <p className="font-bold text-lg">
                         {`${name} - ${breed}`}
                     </p>
