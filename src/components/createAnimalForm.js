@@ -99,7 +99,7 @@ export default function CreateForm() {
                 <button onClick={() => router.push("/animalsDashboard")} type="button" className="w-[200px] h-[35px] border-[2px] border-red-500 text-red-500 rounded-md mt-[10px] mr-[20px] hover:bg-red-500 hover:text-white">
                     Cancel
                 </button>
-                <button type="submit" className="w-[200px] h-[35px] border-[2px] border-red-500 text-red-500 rounded-md mt-[10px] hover:bg-red-500 hover:text-white">
+                <button type="submit" className="w-[200px] h-[35px] border-[2px] border-red-500 rounded-md mt-[10px] bg-red-500 text-white">
                     Save
                 </button>
             </div>
