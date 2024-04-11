@@ -36,7 +36,12 @@ export default function Sidebar( {currentPage} ) {
             if (document.getElementById("animalDash")) {
                 document.getElementById("animalDash").classList.add("bg-red-600", "text-white")
             }
+        } else if (currentPage === "allTraining") {
+            if (document.getElementById("allTraining")) {
+                document.getElementById("allTraining").classList.add("bg-red-600", "text-white")
+            }
         }
+        
     }, [admin])
 
 
@@ -56,7 +61,7 @@ export default function Sidebar( {currentPage} ) {
                     <p class="mt-[10px] ml-[30px] mb-[8px] font-medium text-lg">
                         Admin access
                     </p>
-                    <button class="flex flex-row justify-start items-center text-gray-600 hover:text-white hover:bg-red-600 w-[240px] h-[45px] ml-[15px] pl-[15px] rounded-[13px] text-left text-lg">
+                    <button onClick={() => router.push("/allTraining")} id="allTraining" class="flex flex-row justify-start items-center text-gray-600 hover:text-white hover:bg-red-600 w-[240px] h-[45px] ml-[15px] pl-[15px] rounded-[13px] text-left text-lg">
                         <img src="images/inactiveAllTrainingLogo.png" class="h-6 pr-[20px]"></img>
                         All training
                     </button>
