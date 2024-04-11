@@ -94,7 +94,7 @@ export default function CreateForm() {
             <p class="text-lg mb-[1px] text-black font-medium">
                 Note
             </p>
-            <textarea onChange={(e) => setLink(e.target.value)} placeholder="Please provide a link to an image of your dog" type="text" className="w-full h-[110px] border-[2px] border-gray-300 rounded-md pl-[20px] pr-[20px] pt-3 mb-[10px] text-start focus:outline-gray-500"></textarea>
+            <textarea rows={2} onChange={(e) => setLink(e.target.value)} placeholder="Please provide a link to an image of your dog, a default image will be provided if no text is present" type="text" className="w-full h-[110px] border-[2px] border-gray-300 rounded-md pl-[20px] pr-[20px] pt-3 mb-[10px] text-start focus:outline-gray-500"></textarea>
             <div className="flex flex-row">
                 <button onClick={() => router.push("/animalsDashboard")} type="button" className="w-[200px] h-[35px] border-[2px] border-red-500 text-red-500 rounded-md mt-[10px] mr-[20px] hover:bg-red-500 hover:text-white">
                     Cancel
