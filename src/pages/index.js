@@ -12,7 +12,7 @@ export default function Home({ verify }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [wrong, setWrong] = useState(false);
-
+  
   
   
   const router = useRouter()
