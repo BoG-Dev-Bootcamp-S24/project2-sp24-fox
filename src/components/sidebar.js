@@ -31,7 +31,6 @@ export default function Sidebar( {currentPage} ) {
             if (document.getElementById("userDash")) {
                 document.getElementById("userDash").classList.add("bg-red-600", "text-white")
             }
-
         } else if  (currentPage === "animalDash") {
             if (document.getElementById("animalDash")) {
                 document.getElementById("animalDash").classList.add("bg-red-600", "text-white")

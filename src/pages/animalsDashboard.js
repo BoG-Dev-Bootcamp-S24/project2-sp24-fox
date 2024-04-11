@@ -59,7 +59,7 @@ export default function animalsDashboard() {
                         </div>
                     </div>
                     <hr className="bg-gray-300 w-full h-[2px]"></hr>
-                    <div className="flex flex-row flex-wrap justify-start items-start w-full h-screen ml-[90px] mt-[20px] content-start text-black">
+                    <div className="flex flex-row flex-wrap justify-start items-start w-full h-screen ml-[45px] mt-[20px] content-start text-black">
                         {displayAnimals()}
                     </div>
                 </div>

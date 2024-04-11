@@ -18,24 +18,18 @@ export default function trainingDashboard() {
 
     const router = useRouter();
 
-    const [isLogs, setIsLogs] = useState(false);
-
     const [mylogs, setMyLogs] = useState([])
 
     useEffect(() => {
-        async function displayLogs() {
-            const arr = await Promise.all(logs.map(async(element) =>  {
-                const id = element.animal;
-                const response = await fetch("/api/animal?" + `id=${id}`);
-                const result = await response.text();
-               return <div><TrainingLogCard breed={JSON.parse(result).breed} hours={element.hours} description={element.description} date={element.date} title={element.title} name={JSON.parse(result).name} owner={fullName} /></div>
-            }))
-            setMyLogs(arr);
-        } 
+        async function getData() {
+            const response = await fetch("/api/admin/training")
 
-        displayLogs()
+            setMyLogs(JSON.parse(await response.text()))
+        }
+
+        getData()
         
-    }, [logs])
+    }, [])
 
     function hello() {
         router.push("/")
@@ -90,7 +84,9 @@ export default function trainingDashboard() {
                     </div>
                     <hr className="bg-gray-300 w-full h-[2px]"></hr>
                     <div className="flex flex-col justify-start items-center min-w-fit ml-16 max-h-[50rem] min-h-[30rem] mt-[20px] overflow-y-auto">
-                        {mylogs}
+                    {mylogs.map((element) => {
+                        return <TrainingLogCard breed={element.breed} hours={element.hours} description={element.description} date={element.date} title={element.title} name={element.animal} owner={element.user} />
+                       })}
                     </div>
                 </div>
             </div>
