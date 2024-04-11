@@ -84,7 +84,7 @@ export default function CreateForm() {
             <div className="flex flex-row mb-[10px]">
                 <div className="flex flex-col w-3/5">
                     <p class="text-lg mb-[1px] text-black font-medium">
-                        Birth Month
+                        Month
                     </p>
                     <select onChange={(e) => setDate(date.setMonth(e.target.value))} className="w-full h-[45px] border-[2px] border-gray-300 rounded-md pl-[20px] pb-[2px] focus:outline-gray-500">
                         <option hidden disabled selected value></option>

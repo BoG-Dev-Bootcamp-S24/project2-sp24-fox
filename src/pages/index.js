@@ -59,10 +59,6 @@ export default function Home({ verify }) {
     router.push("/trainingDashboard")
   }
   
-  // useEffect(() => {
-  //   console.log(email)
-  //   console.log(password)
-  // }, [email, password])
   return ( ready ? red ? (
 
 <main className="">
@@ -95,7 +91,7 @@ export default function Home({ verify }) {
         <div class="mt-2">
           <input required value={password} onInput={e => setPassword(e.target.value)} class="focus:outline-none focus:shadow-outline appearance-none block w-full placeholder:text-black text-black py-1  leading-tight" id="grid-password" type="password" placeholder="Password"></input>
         </div>
-        <div className="inset-x-0 bottom-0 h-[2px] bg-red-500 rounded-b"></div>
+        <div className="inset-x-0 bottom-0 h-[3px] bg-red-500 rounded-b"></div>
       </div>
   <br></br>
   
@@ -103,7 +99,7 @@ export default function Home({ verify }) {
         <div className="text-3xl text-center text-black">{wrong ? "Invalid Login" : ""}</div>
       </div>
   <div class="text-center relative">
-      <button type="submit" className="text-white font-medium bg-red-600 hover:bg-red-800 focus:ring-4 w-full focus:outline-none focus:ring-blue-300 text-2xl rounded-xl px-5 py-1.5 text-center ">
+      <button type="submit" className="text-white font-medium bg-red-600 hover:bg-red-800 w-full focus:outline-none text-2xl rounded-xl px-5 py-1.5 text-center ">
         Log in
       </button>
       </div>

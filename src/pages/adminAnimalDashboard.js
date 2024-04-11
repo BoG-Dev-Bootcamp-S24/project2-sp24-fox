@@ -1,21 +1,44 @@
-import CreateForm from "@/components/createLogForm";
-import Sidebar from "@/components/sidebar";
-import { useAppContext } from "@/context";
+import AnimalCard from '@/components/animalCard';
+import Sidebar from '@/components/sidebar';
+import { useAppContext } from '@/context';
+import { Oswald } from 'next/font/google';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react'
 
 
-export default function createTrainingLog() {
+const oswald = Oswald({subsets: ["latin"]})
+export default function adminAnimalDashboard() {
 
-    const {ready, red} = useAppContext()
+    const { ready, red } = useAppContext() 
 
+    const [allAnimals, setAllAnimals] = useState([])
+
+    const router = useRouter();
+
+    useEffect(() => {
+        async function getData() {
+            const response = await fetch("/api/admin/animals")
+
+            setAllAnimals(JSON.parse(await response.text()))
+        }
+
+        getData()
+
+    }, [])
+
+    function hello() {
+        router.push("/trainingDashboard")
+      }
+      
 
     return (ready ? (!red ? (
-        <main class="overflow-hidden">
+        <main class="overflow-hidden text-black">
             <div>
-                <nav class="bg-white border-gray-300 shadow-md shadow-red-500/40">
+                <nav class={`bg-white border-gray-300 shadow-md shadow-black-500/40 ${oswald.className}`}>
                     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                        <a class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <a class="flex items-center space-x-1 rtl:space-x-reverse">
                             <img src="images/appLogo.png" class="h-8"/>
-                            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Progress</span>
+                            <span class="self-center text-2xl font-medium dark:text-black">Progress</span>
                         </a>
                         <a class="flex items-center space-x-3 rtl:space-x-reverse">
                         <input type="text" id="simple-search" class="bg-gray-50 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-2.5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required />
@@ -30,16 +53,20 @@ export default function createTrainingLog() {
                 </nav>
             </div>
             <div class="flex flex-row">
-                <Sidebar currentPage={"training"}/>
+                <Sidebar currentPage={"animalDash"}/>
                 <div class="flex flex-col w-screen">
                     <div class="flex flex-row justify-between items-end w-full h-[70px]">
                         <p class="text-2xl mb-[10px] ml-[50px] text-gray-500 font-medium">
-                            Training Logs
+                            All Animals
                         </p>
+                        <div class="w-[150px] mr-[50px]">
+                        </div>
                     </div>
                     <hr className="bg-gray-300 w-full h-[2px]"></hr>
-                    <div className="flex flex-row flex-wrap content-start justify-start items-start w-10/12 h-screen ml-[220px] mt-[10px]">
-                        <CreateForm/>
+                    <div className="flex flex-row flex-wrap content-start justify-start items-start w-11/12 h-screen ml-16 mt-[20px]">
+                       {allAnimals.map((element) => {
+                        return <AnimalCard owner={element.owner} name={element.name} breed={element.breed} hours={element.hoursTrained} pic={element.profilePicture}/>
+                       })}
                     </div>
                 </div>
             </div>

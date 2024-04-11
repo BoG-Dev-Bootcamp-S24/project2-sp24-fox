@@ -81,40 +81,25 @@ export default function Home() {
         <div class="mt-2 relative">
         <input value={email} onInput={e => setEmail(e.target.value)} required id="email" class="focus:outline-none focus:shadow-outline appearance-none block w-full placeholder:text-black text-black py-1 leading-tight" type="text" placeholder="Email"></input>
         </div>
-        <div className="inset-x-0 bottom-0 h-[2px] bg-red-500 rounded-b"></div>
+        <div className="inset-x-0 bottom-0 h-[3px] bg-red-500 rounded-b"></div>
       </div>
 
 
         <div class="mt-2 relative">
-          <input value={password} onInput={e => setPassword(e.target.value)} required id="password" class="focus:outline-none focus:shadow-outline appearance-none block w-full placeholder:text-black text-black py-1 leading-tight" type="text" placeholder="Password"></input>
+          <input value={password} onInput={e => setPassword(e.target.value)} required id="password" class="focus:outline-none focus:shadow-outline appearance-none block w-full placeholder:text-black text-black py-1 leading-tight" type="password" placeholder="Password"></input>
           <div className="inset-x-0 bottom-0 h-[2px] bg-red-500 rounded-b"></div>
         </div>
         
         <div class="mt-2 relative">
-          <input value={confPassword} onInput={e => setConfPassword(e.target.value)} required id="confPassword" class="focus:outline-none focus:shadow-outline appearance-none block w-full placeholder:text-black text-black py-1 leading-tight" type="text" placeholder="Confirm Password"></input>
-          <div className="inset-x-0 bottom-0 h-[2px] bg-red-500 rounded-b"></div>
+          <input value={confPassword} onInput={e => setConfPassword(e.target.value)} required id="confPassword" class="focus:outline-none focus:shadow-outline appearance-none block w-full placeholder:text-black text-black py-1 leading-tight" type="password" placeholder="Confirm Password"></input>
+          <div className="inset-x-0 bottom-0 h-[3px] bg-red-500 rounded-b"></div>
         </div>
         
 
 
 
     <div class="flex items-start space-x-2">
-        <input onClick={() => setAdmin(!admin)} type="checkbox" className="  accent-red-600  checked:bg-red-600 focus:ring-0 h-5 w-5"/>
-        <svg
-    className="
-      absolute 
-      w-4 h-4 mt-1
-      hidden peer-checked:block"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="4"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  >
-    <polyline points="20 6 9 17 4 12"></polyline>
-  </svg>
+        <input onClick={() => setAdmin(!admin)} type="checkbox" className="accent-red-600 checked:bg-red-600 h-5 w-5"/>
         <div class="flex flex-col">
             <h1 class="text-gray-700 mt-0.5 font-medium leading-none">Admin Access</h1>
         </div>
@@ -122,7 +107,7 @@ export default function Home() {
  
     <br></br>
       <div class="text-center">
-      <button type="submit" class="text-white w-full bg-red-700 hover:bg-red-800 focus:ring-4  focus:outline-none focus:ring-blue-300 text-lg rounded-lg px-5 py-1.5 text-center items-center">
+      <button type="submit" class="text-white w-full bg-red-700 hover:bg-red-800 focus:outline-none text-lg rounded-lg px-5 py-1.5 text-center items-center">
         Sign Up
       </button>
       </div>
