@@ -18,7 +18,7 @@ export default function trainingDashboard() {
 
     const router = useRouter();
 
-    const [isLogs, setIsLogs] = useState(false);
+    const [loading, setLoading] = useState(true)
     const [search, setSearch] = useState("")
     const [mylogs, setMyLogs] = useState([])
 
@@ -31,6 +31,7 @@ export default function trainingDashboard() {
                return <div><TrainingLogCard breed={JSON.parse(result).breed} hours={element.hours} description={element.description} date={element.date} title={element.title} name={JSON.parse(result).name} owner={fullName} /></div>
             }))
             setMyLogs(arr);
+            setLoading(false)
         } 
 
         displayLogs()
@@ -88,9 +89,9 @@ export default function trainingDashboard() {
                     </div>
                     <hr className="bg-gray-300 w-full h-[2px]"></hr>
                     <div className="flex flex-col justify-start items-center min-w-fit ml-6 max-h-[42rem] min-h-[30rem] mt-[20px] overflow-y-auto">
-                        {mylogs.filter((e) => {
+                        {!loading ? (mylogs.length === 0 ? <div className="text-gray-500 text-2xl font-semibold">There are no logs to be displayed</div> :mylogs.filter((e) => {
                             return search === "" ? true : e.props.children.props.title.toLowerCase().match(search.toLowerCase())
-                        })}
+                        })) : <div className="text-gray-500 text-2xl font-semibold">Loading...</div>}
                     </div>
                 </div>
             </div>

@@ -20,8 +20,6 @@ export default function Home() {
   
   const router = useRouter();
 
-  const {setFullName, setId, setReady, setRed} = useAppContext()
-
   async function registerUser() {
     try {
       if (password === confPassword) {
