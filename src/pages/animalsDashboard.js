@@ -3,7 +3,6 @@ import Sidebar from "@/components/sidebar";
 import { useAppContext } from "@/context";
 import { Oswald } from "next/font/google";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 const oswald = Oswald({ subsets: ["latin"] })
 
@@ -11,11 +10,9 @@ export default function animalsDashboard() {
     const { animals, fullName, ready, red } = useAppContext()
     
     const router = useRouter()
-    const [search, setSearch] = useState("")
+
     function displayAnimals() {
-        return animals.filter((element) => {
-            return search === "" ? true : element.name.toLowerCase().match(search.toLowerCase());
-        }).map(element => {
+        return animals.map(element => {
            return <div><AnimalCard owner={fullName} name={element.name} breed={element.breed} hours={element.hoursTrained} pic={element.profilePicture}/></div>
         })
     }
@@ -32,15 +29,13 @@ export default function animalsDashboard() {
                     <span class="self-center text-3xl font-medium dark:text-black">Progress</span>
                 </a>
                     <div class="flex justify-center ml-[25%] w-1/2">
-                            <label for="simple-search" class="sr-only">Search</label>
-                            <div class="relative w-full">
-                                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-                                </div>
-                                <input onChange={(e) => {
-                                    setSearch(e.target.value)
-                                }} type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="Search" required></input>
+                        <label for="simple-search" class="sr-only">Search</label>
+                        <div class="relative w-full">
+                            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                             </div>
+                            <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="Search" required></input>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -64,7 +59,7 @@ export default function animalsDashboard() {
                         </div>
                     </div>
                     <hr className="bg-gray-300 w-full h-[2px]"></hr>
-                    <div className="flex flex-row flex-wrap justify-start items-start w-full h-screen ml-11 mt-[20px] content-start text-black">
+                    <div className="flex flex-row flex-wrap justify-start items-start w-full h-screen ml-[90px] mt-[20px] content-start text-black">
                         {displayAnimals()}
                     </div>
                 </div>

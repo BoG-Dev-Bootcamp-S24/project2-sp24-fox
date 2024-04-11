@@ -75,9 +75,7 @@ export default function trainingDashboard() {
                                     router.push("/createTrainingLog")
                                 } else {
                                     alert("Please create an animal profile!")
-                                }
-                                
-                                
+                                }   
                                 }} class=" w-[40px] h-[50px] mr-[200px]">
                                 <div class="flex flex-row justify-center items-center w-[150px]">
                                     <img src="images/createNewLogo.png" class="h-5 pr-[5px]"></img>
@@ -98,5 +96,4 @@ export default function trainingDashboard() {
             </div>
         </main>
     ) : hello() ): <div>loading...</div>);
-
 }
