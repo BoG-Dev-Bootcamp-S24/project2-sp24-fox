@@ -15,10 +15,6 @@ export default function AppWrapper({ children }) {
     const [animals, setAnimals] = useState([])
     const [logs, setLogs] = useState([])
     const [newstuff, setNewStuff] = useState(false)
-    // if (userinfo) {
-    //     setFullName(userinfo.fullName)
-    //     setId(userinfo.id);
-    // } 
     
     useEffect(() => {
         
