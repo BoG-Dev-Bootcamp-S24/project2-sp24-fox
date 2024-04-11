@@ -1,4 +1,3 @@
-'use client'
 import TrainingLogCard from "@/components/trainingLogCard";
 import Sidebar from "@/components/sidebar";
 

@@ -1,6 +1,9 @@
 import CreateForm from "@/components/createAnimalForm";
 import Sidebar from "@/components/sidebar";
+import { Oswald } from "next/font/google";
 
+
+const oswald = Oswald({subsets: ["latin"]})
 
 export default function createAnimal() {
     return (

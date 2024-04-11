@@ -1,7 +1,11 @@
+import { Oswald } from "next/font/google";
 import CreateForm from "@/components/createLogForm";
 import Sidebar from "@/components/sidebar";
 import { useAppContext } from "@/context";
 
+
+
+const oswald = Oswald({subsets: ["latin"]})
 
 export default function createTrainingLog() {
 
