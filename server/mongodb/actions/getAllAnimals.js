@@ -13,7 +13,6 @@ export default async function getAllAnimals() {
             
             return element
         }));
-        console.log(newResult)
         return Promise.all(newResult)
     } catch (error) {
         console.error(error)

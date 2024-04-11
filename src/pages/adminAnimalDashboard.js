@@ -63,7 +63,7 @@ export default function adminAnimalDashboard() {
                         </div>
                     </div>
                     <hr className="bg-gray-300 w-full h-[2px]"></hr>
-                    <div className="flex flex-row flex-wrap content-start justify-start items-start w-11/12 h-screen ml-16 mt-[20px]">
+                    <div className="flex flex-row flex-wrap content-start justify-start items-start w-11/12 h-screen ml-6 mt-[20px]">
                        {allAnimals.map((element) => {
                         return <AnimalCard owner={element.owner} name={element.name} breed={element.breed} hours={element.hoursTrained} pic={element.profilePicture}/>
                        })}
