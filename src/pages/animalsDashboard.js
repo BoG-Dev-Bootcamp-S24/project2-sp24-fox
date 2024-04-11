@@ -15,11 +15,11 @@ export default function animalsDashboard() {
     const [search, setSearch] = useState("");
 
     function displayAnimals() {
-        return animals.filter((element) => {
+        return animals.length !== 0 ? animals.filter((element) => {
             return search === "" ? true : element.name.toLowerCase().match(search.toLowerCase());
         }).map(element => { 
            return <div><AnimalCard owner={fullName} name={element.name} breed={element.breed} hours={element.hoursTrained} pic={element.profilePicture}/></div>
-        })
+        }) : <div className="text-gray-500 text-2xl font-semibold text-center ml-96">There are no animal profiles</div>
     }
     function hello() {
         router.push("/")

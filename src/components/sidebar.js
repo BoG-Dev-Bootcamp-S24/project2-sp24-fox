@@ -64,11 +64,11 @@ export default function Sidebar( {currentPage} ) {
                         <img src="images/inactiveAllTrainingLogo.png" class="h-6 pr-[20px]"></img>
                         All training
                     </button>
-                    <button onClick={() => router.push("/adminAnimalDashboard")} id="animalDash" class="flex flex-row justify-start items-center text-gray-600 hover:text-white hover:bg-red-600 w-[240px] h-[45px] ml-[15px] pl-[15px] rounded-[13px] text-left text-lg">
+                    <button onClick={() => router.push("/adminAnimalDashboard")} id="animalDash" class="mt-[.04rem] flex flex-row justify-start items-center text-gray-600 hover:text-white hover:bg-red-600 w-[240px] h-[45px] ml-[15px] pl-[15px] rounded-[13px] text-left text-lg">
                         <img src="images/inactiveAllAnimalsLogo.png" class="h-6 pr-[20px]"></img>
                         All animals
                     </button>
-                    <button onClick={() => router.push("/userDashboard")} id="userDash" class="flex flex-row justify-start items-center text-gray-600 hover:text-white hover:bg-red-600 w-[240px] h-[45px] ml-[15px] pl-[15px] rounded-[13px] text-left text-lg">
+                    <button onClick={() => router.push("/userDashboard")} id="userDash" class="mt-[.04rem] flex flex-row justify-start items-center text-gray-600 hover:text-white hover:bg-red-600 w-[240px] h-[45px] ml-[15px] pl-[15px] rounded-[13px] text-left text-lg">
                         <img src="images/inactiveAllUsersLogo.png" class="h-6 pr-[20px]"></img>
                         All users
                     </button>
