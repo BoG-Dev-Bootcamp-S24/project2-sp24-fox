@@ -1,11 +1,17 @@
+import { Oswald } from "next/font/google";
 
+
+
+const oswald = Oswald({subsets: ["latin"]})
 
 export default function TrainingLogCard({breed, hours, description, date, title, name, owner}) {
     
+
+   
     return (
         <div className="w-[60rem]">
             <div className="flex flex-row text-black justify-start items-start  bg-white w-full h-32 mt-[10px] mb-[10px] rounded-xl drop-shadow-xl">
-                <div className="flex flex-col justify-center items-center bg-blue-900 h-full w-44 rounded-l-xl">
+                <div className={`flex flex-col justify-center items-center bg-blue-900 h-full w-44 rounded-l-xl ${oswald.className}`}>
                     <p className="font-extrabold text-4xl text-white">
                         {new Date(date).getDate()}
                     </p>

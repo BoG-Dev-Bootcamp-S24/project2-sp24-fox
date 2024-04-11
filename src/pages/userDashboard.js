@@ -60,18 +60,10 @@ export default function userDashboard() {
                             All Users
                         </p>
                         <div class="w-[150px] mr-[50px]">
-                            <button class=" w-[40px] h-[50px] mr-[200px]">
-                                <div class="flex flex-row justify-center items-center w-[150px]">
-                                    <img src="images/createNewLogo.png" class="h-5 pr-[5px]"></img>
-                                    <p class="font-medium text-gray-500">
-                                        Create New
-                                    </p>
-                                </div>
-                            </button>
                         </div>
                     </div>
                     <hr className="bg-gray-300 w-full h-[2px]"></hr>
-                    <div className="flex flex-row flex-wrap content-start justify-start items-start w-10/12 h-screen ml-24 mt-[20px]">
+                    <div className="flex flex-row flex-wrap content-start justify-start items-start w-11/12 h-screen ml-16 mt-[20px]">
                        {users.map((element) => {
                         return <UserCard name={element.fullName} admin={element.admin}/>
                        })}

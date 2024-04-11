@@ -1,5 +1,3 @@
-
-// import { cookies } from "next/headers";
 import cookie from "cookie";
 import loginUser from "../../../../server/mongodb/actions/loginUser"
 import jwt from "jsonwebtoken";
@@ -22,12 +20,11 @@ export default async function handler(req, res)  {
             let result;
             if (session !== null && session.session) {
                 result = jwt.verify(session.session, "BoG")
-                
                 result.animals = await getUsersAnimals(result.id)
                 result.logs = await getUsersLogs(result.id)
                 result ? res.status(200).json(result) : res.status(500).send("Failure")
             } else {
-                result ? res.status(200).json(result) : res.status(500).send("Failure")
+                res.status(500).send("Failure")
             }
             
         }
