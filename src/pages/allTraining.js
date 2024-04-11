@@ -69,7 +69,7 @@ export default function trainingDashboard() {
                         </div>
                     </div>
                     <hr className="bg-gray-300 w-full h-[2px]"></hr>
-                    <div className="flex flex-col justify-start items-center min-w-fit ml-6 max-h-[50rem] min-h-[30rem] mt-[20px] overflow-y-auto">
+                    <div className="flex flex-col justify-start items-center min-w-fit ml-6 max-h-[42rem] min-h-[30rem] mt-[20px] overflow-y-auto">
                     {mylogs.filter(element => {
                         return search === "" ? true : element.title.toLowerCase().match(search.toLowerCase());
                     }).map((element) => {
