@@ -1,9 +1,6 @@
-
-import Image from "next/image";
 import { Heebo, Inter, Oswald } from "next/font/google";
 import { createContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { set } from "mongoose";
 import { useAppContext } from "@/context";
 export let userLoggedin = createContext(false)
 
